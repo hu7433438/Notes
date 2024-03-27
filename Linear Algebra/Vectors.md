@@ -7,7 +7,7 @@
   * The scalar component
     * $\text{comp}_{\mathbf{w}}(\mathbf{v}) = \frac{\mathbf{w}\bullet\mathbf{v}}{\|\mathbf{w}\|}$
 * The Cross Product
-  * $\mathbf{u}\times\mathbf{v}=\begin{bmatrix} u_1\\u_2\\u_3\end{bmatrix} \times \begin{bmatrix} v_1\\v_2\\v_3\end{bmatrix} =\begin{bmatrix} u_2v_3-u_3v_2\\u_3v_1-u_1v_3\\u_1v_2-u_2v_1\end{bmatrix}$
+  * $\mathbf{u}\times\mathbf{v}=\begin{bmatrix}u_1\\u_2\\u_3\end{bmatrix}\times\begin{bmatrix}v_1\\v_2\\v_3\end{bmatrix}=\begin{bmatrix}u_2v_3-u_3v_2\\u_3v_1-u_1v_3\\u_1v_2-u_2v_1\end{bmatrix}$
   * Rules of calculation
     * $\mathbf{a}\times (\mathbf{b}+\mathbf{c}) = \mathbf{a}\times\mathbf{b}+\mathbf{a}\times\mathbf{c}$
     * $(c\mathbf{a})\times \mathbf{b} = \mathbf{a}\times(c\mathbf{b}) = c(\mathbf{a}\times\mathbf{b})$
