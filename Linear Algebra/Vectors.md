@@ -15,3 +15,7 @@
     * $(\mathbf{a}\times\mathbf{b})\times\mathbf{c} = \mathbf{a}\times(\mathbf{b}\times\mathbf{c}) + \mathbf{b}\times(\mathbf{c}\times\mathbf{a})$
     * if $\mathbf{a}$ and $\mathbf{b}$ lie along the same line
       * $\mathbf{a}\times \mathbf{b} = \mathbf{0}$
+  * Applications 
+    * $\|\mathbf{a}\times\mathbf{b}\|^2 = \|\mathbf{a}\|^2\|\mathbf{b}\|^2 - (\mathbf{a}\bullet\mathbf{b})^2$
+    * $\text{Area} = \|\mathbf{a}\times\mathbf{b}\| =\|\mathbf{a}\|\,\|\mathbf{b}\|\,\sin(\alpha)$
+    * $\text{Volume} = \|\mathbf{a}\times\mathbf{b}\|\,\big|\|\mathbf{c}\|\cos(\theta)\big| = \big|\, \|\mathbf{a}\times\mathbf{b}\|\,\|\mathbf{c}\|\cos(\theta)\,\big|=\big| (\mathbf{a}\times\mathbf{b})\bullet\mathbf{c}\big|$
