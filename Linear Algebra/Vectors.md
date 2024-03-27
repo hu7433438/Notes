@@ -5,7 +5,7 @@
   * The vector component
     * $\mathbf{p}=\text{proj}_{\mathbf{w}}(\mathbf{v})=\left(\frac{\mathbf{w}\bullet\mathbf{v}}{\mathbf{w}\bullet\mathbf{w}}\right)\ \mathbf{w}$
   * The scalar component
-    * $\text{comp}_{\mathbf{w}}(\mathbf{v}) = \frac{\mathbf{w}\bullet\mathbf{v}}{\|\mathbf{w}\|}$
+    * $\text{comp}_{\mathbf{w}}(\mathbf{v}) = \frac{\mathbf{w}\bullet\mathbf{v}}{\Vert\mathbf{w}\Vert}$
 * The Cross Product
   * $\mathbf{u}\times\mathbf{v}=\begin{bmatrix}u_1\\u_2\\u_3\end{bmatrix}\times\begin{bmatrix}v_1\\v_2\\v_3\end{bmatrix}=\begin{bmatrix}u_2v_3-u_3v_2\\u_3v_1-u_1v_3\\u_1v_2-u_2v_1\end{bmatrix}$
   * Rules of calculation
@@ -16,6 +16,6 @@
     * if $\mathbf{a}$ and $\mathbf{b}$ lie along the same line
       * $\mathbf{a}\times \mathbf{b} = \mathbf{0}$
   * Applications 
-    * $\|\mathbf{a}\times\mathbf{b}\|^2 = \|\mathbf{a}\|^2\|\mathbf{b}\|^2 - (\mathbf{a}\bullet\mathbf{b})^2$
-    * $\text{Area} = \|\mathbf{a}\times\mathbf{b}\| =\|\mathbf{a}\|\ \|\mathbf{b}\|\,\sin(\alpha)$
-    * $\text{Volume} = \|\mathbf{a}\times\mathbf{b}\| \big|\|\mathbf{c}\|\cos(\theta)\big| = \big|\ \|\mathbf{a}\times\mathbf{b}\|\ \| \mathbf{c}\|\cos(\theta)\ \big|=\big| (\mathbf{a}\times\mathbf{b})\bullet\mathbf{c}\big|$
+    * $\Vert\mathbf{a}\times\mathbf{b}\Vert^2 = \Vert\mathbf{a}\Vert^2\Vert\mathbf{b}\Vert^2 - (\mathbf{a}\bullet\mathbf{b})^2$
+    * $\text{Area} = \Vert\mathbf{a}\times\mathbf{b}\Vert =\Vert\mathbf{a}\Vert\ \Vert\mathbf{b}\Vert\,\sin(\alpha)$
+    * $\text{Volume} = \Vert\mathbf{a}\times\mathbf{b}\Vert \big|\Vert\mathbf{c}\Vert\cos(\theta)\big| = \big|\ \Vert\mathbf{a}\times\mathbf{b}\Vert\ \Vert \mathbf{c}\Vert\cos(\theta)\ \big|=\big| (\mathbf{a}\times\mathbf{b})\bullet\mathbf{c}\big|$
