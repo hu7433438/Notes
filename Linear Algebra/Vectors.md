@@ -1,7 +1,7 @@
 * The dot product
   * $\mathbf{x}\bullet\mathbf{y}=x_1y_1+...+x_ny_n$
   * Find the angle
-    * $\cos (\alpha)=\frac {\mathbf{x}\bullet\mathbf{y}}{\|\mathbf{x}\| \|\mathbf{y}\|}$
+    * $\cos (\alpha)=\frac {\mathbf{x}\bullet\mathbf{y}}{\Vert\mathbf{x}\Vert \Vert\mathbf{y}\Vert}$
   * The vector component
     * $\mathbf{p}=\text{proj}_{\mathbf{w}}(\mathbf{v})=\left(\frac{\mathbf{w}\bullet\mathbf{v}}{\mathbf{w}\bullet\mathbf{w}}\right)\ \mathbf{w}$
   * The scalar component
