@@ -15,4 +15,3 @@
     * $(\mathbf{a}\times\mathbf{b})\times\mathbf{c} = \mathbf{a}\times(\mathbf{b}\times\mathbf{c}) + \mathbf{b}\times(\mathbf{c}\times\mathbf{a})$
     * if $\mathbf{a}$ and $\mathbf{b}$ lie along the same line
       * $\mathbf{a}\times \mathbf{b} = \mathbf{0}$
-      * $\begin{bmatrix}u_2v_3-u_3v_2\\u_3v_1-u_1v_3\\u_1v_2-u_2v_1\end{bmatrix}$
