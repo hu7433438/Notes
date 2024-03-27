@@ -17,5 +17,5 @@
       * $\mathbf{a}\times \mathbf{b} = \mathbf{0}$
   * Applications 
     * $\Vert\mathbf{a}\times\mathbf{b}\Vert^2 = \Vert\mathbf{a}\Vert^2\Vert\mathbf{b}\Vert^2 - (\mathbf{a}\bullet\mathbf{b})^2$
-    * $\text{Area} = \Vert\mathbf{a}\times\mathbf{b}\Vert =\Vert\mathbf{a}\Vert\ \Vert\mathbf{b}\Vert\,\sin(\alpha)$
+    * $\text{Area} = \Vert\mathbf{a}\times\mathbf{b}\Vert =\Vert\mathbf{a}\Vert\ \Vert\mathbf{b}\Vert\sin(\alpha)$
     * $\text{Volume} = \Vert\mathbf{a}\times\mathbf{b}\Vert \big|\Vert\mathbf{c}\Vert\cos(\theta)\big| = \big|\ \Vert\mathbf{a}\times\mathbf{b}\Vert\ \Vert \mathbf{c}\Vert\cos(\theta)\ \big|=\big| (\mathbf{a}\times\mathbf{b})\bullet\mathbf{c}\big|$
