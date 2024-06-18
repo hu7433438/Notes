@@ -58,9 +58,10 @@ def hinge_loss_full(feature_matrix, labels, theta, theta_0):
         the hinge loss, as a float, associated with the given dataset and
         parameters.  This number should be the average hinge loss across all of
     """
-
-    # Your code here
-    raise NotImplementedError
+    total_loss = 0
+    for i, v in enumerate(feature_matrix):
+        total_loss += hinge_loss_single(v, labels[i], theta, theta_0)
+    return total_loss / len(feature_matrix)
 
 
 def perceptron_single_step_update(
@@ -84,8 +85,10 @@ def perceptron_single_step_update(
         the updated feature-coefficient parameter `theta` as a numpy array
         the updated offset parameter `theta_0` as a floating point number
     """
-    # Your code here
-    raise NotImplementedError
+    if label * (np.dot(feature_vector, current_theta) + current_theta_0) <= 0:
+        current_theta += label * feature_vector
+        current_theta_0 += label
+    return current_theta, current_theta_0
 
 
 def perceptron(feature_matrix, labels, T):
@@ -110,14 +113,13 @@ def perceptron(feature_matrix, labels, T):
         the offset parameter `theta_0` as a floating point number
             (found also after T iterations through the feature matrix).
     """
-    # Your code here
-    raise NotImplementedError
+    m, n = feature_matrix.shape
+    theta = np.zeros(n)
+    theta_0 = 0
     for t in range(T):
-        for i in get_order(nsamples):
-            # Your code here
-            raise NotImplementedError
-    # Your code here
-    raise NotImplementedError
+        for i in get_order(m):
+            theta, theta_0 = perceptron_single_step_update(feature_matrix[i], labels[i], theta, theta_0)
+    return theta, theta_0
 
 
 def average_perceptron(feature_matrix, labels, T):
@@ -146,8 +148,17 @@ def average_perceptron(feature_matrix, labels, T):
         the average offset parameter `theta_0` as a floating point number
             (averaged also over T iterations through the feature matrix).
     """
-    # Your code here
-    raise NotImplementedError
+    m, n = feature_matrix.shape
+    theta = np.zeros(n)
+    theta_0 = 0
+    a = np.zeros(n)
+    b = 0
+    for t in range(T):
+        for i in get_order(m):
+            theta, theta_0 = perceptron_single_step_update(feature_matrix[i], labels[i], theta, theta_0)
+            a += theta
+            b += theta_0
+    return a/m/T, b/m/T
 
 
 def pegasos_single_step_update(
