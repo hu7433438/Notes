@@ -8,14 +8,16 @@ import torch.autograd as autograd
 import torch.nn.functional as F
 import torch.nn as nn
 import sys
+
 sys.path.append("..")
 import utils
 from utils import *
 from train_utils import batchify_data, run_epoch, train_model
 
+
 def main():
     # Load the dataset
-    num_classes = 10
+    num_classes = 128
     X_train, y_train, X_test, y_test = get_MNIST_data()
 
     # Split into train and dev
@@ -39,12 +41,13 @@ def main():
     #################################
     ## Model specification TODO
     model = nn.Sequential(
-              nn.Linear(784, 10),
-              nn.ReLU(),
-              nn.Linear(10, 10),
-            )
-    lr=0.1
-    momentum=0
+        nn.Linear(784, num_classes),
+        nn.LeakyReLU(),
+        # nn.ReLU(),
+        nn.Linear(num_classes, 10),
+    )
+    lr = 0.1
+    momentum = 0
     ##################################
 
     train_model(train_batches, dev_batches, model, lr=lr, momentum=momentum)
@@ -52,7 +55,7 @@ def main():
     ## Evaluate the model on test data
     loss, accuracy = run_epoch(test_batches, model.eval(), None)
 
-    print ("Loss on test set:"  + str(loss) + " Accuracy on test set: " + str(accuracy))
+    print("Loss on test set:" + str(loss) + " Accuracy on test set: " + str(accuracy))
 
 
 if __name__ == '__main__':
