@@ -66,12 +66,16 @@ class NeuralNetwork():
         ### Backpropagation ###
 
         # Compute gradients
-        output_layer_error = activated_output - y
+        output_layer_error = (activated_output - y) * output_layer_activation_derivative(output)
         hidden_layer_error = np.multiply(np.vectorize(output_layer_activation_derivative)(activated_output), self.hidden_to_output_weights.transpose())*output_layer_error  # TODO (3 by 1 matrix)
+        # hidden_layer_error = np.multiply((np.transpose(self.hidden_to_output_weights) * output_layer_error), vec_relu_derivative(hidden_layer_weighted_input))  # 3 by 1
 
-        bias_gradients = np.multiply(hidden_layer_error, np.vectorize(rectified_linear_unit_derivative)(hidden_layer_weighted_input))
-        hidden_to_output_weight_gradients = np.multiply(hidden_layer_activation, output_layer_error).transpose()
-        input_to_hidden_weight_gradients = bias_gradients.dot(input_values.transpose())
+        # bias_gradients = np.multiply(hidden_layer_error, np.vectorize(rectified_linear_unit_derivative)(hidden_layer_weighted_input))
+        # hidden_to_output_weight_gradients = np.multiply(hidden_layer_activation, output_layer_error).transpose()
+        # input_to_hidden_weight_gradients = bias_gradients.dot(input_values.transpose())
+        bias_gradients = hidden_layer_error
+        hidden_to_output_weight_gradients = np.transpose(hidden_layer_activation * output_layer_error)# [3 by 1] * [1 by 1] = [3 by 1]
+        input_to_hidden_weight_gradients = np.transpose(input_values * np.transpose(hidden_layer_error)) #  = [2 by 1] * [1 by 3] = [2 by 3]
 
         # Use gradients to adjust weights and biases using gradient descent
         self.biases = self.biases - self.learning_rate*bias_gradients

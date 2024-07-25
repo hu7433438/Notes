@@ -35,11 +35,8 @@ def hinge_loss_single(feature_vector, label, theta, theta_0):
         the hinge loss, as a float, associated with the given data point and
         parameters.
     """
-    z = label * (np.dot(feature_vector, theta) + theta_0)
-    if z >= 1:
-        return 0
-    else:
-        return 1 - z
+    y = np.dot(feature_vector, theta) + theta_0
+    return max(0, 1 - label * y)
 
 
 def hinge_loss_full(feature_matrix, labels, theta, theta_0):
@@ -58,10 +55,10 @@ def hinge_loss_full(feature_matrix, labels, theta, theta_0):
         the hinge loss, as a float, associated with the given dataset and
         parameters.  This number should be the average hinge loss across all of
     """
-    total_loss = 0
-    for i, v in enumerate(feature_matrix):
-        total_loss += hinge_loss_single(v, labels[i], theta, theta_0)
-    return total_loss / len(feature_matrix)
+    ys = feature_matrix.dot(theta) + theta_0
+    # loss = np.maximum(1 - ys * labels, np.zeros(len(labels)))
+    # loss = np.maximum(0.0, 1 - ys * labels)
+    return np.mean(np.maximum(0.0, 1 - ys * labels))
 
 
 def perceptron_single_step_update(
@@ -188,12 +185,18 @@ def pegasos_single_step_update(
         real valued number with the value of theta_0 after the old updated has
         completed.
     """
-    if label * (np.dot(theta, feature_vector) + theta_0) <= 1:
-        theta = (1 - eta * L) * theta + eta * label * feature_vector
-        theta_0 += eta * label
-    else:
-        theta = (1 - eta * L) * theta
-    return theta, theta_0
+    # if label * (np.dot(theta, feature_vector) + theta_0) <= 1:
+    #     theta = (1 - eta * L) * theta + eta * label * feature_vector
+    #     theta_0 += eta * label
+    # else:
+    #     theta = (1 - eta * L) * theta
+    # return theta, theta_0
+    margin_factor = label * (np.dot(feature_vector, theta) + theta_0)
+    is_violation = (1. if margin_factor <= 1 else 0.)
+    return (
+        theta + eta * (is_violation * label * feature_vector - L * theta),
+        theta_0 + eta * (is_violation * label)
+    )
 
 
 def pegasos(feature_matrix, labels, T, L):
@@ -267,13 +270,14 @@ def classify(feature_matrix, theta, theta_0):
     """
     # Your code here
 
-    output = []
-    for i in feature_matrix:
-        if np.dot(theta, i) + theta_0 > 0:
-            output.append(1)
-        else:
-            output.append(-1)
-    return np.array(output)
+    # output = []
+    # for i in feature_matrix:
+    #     if np.dot(theta, i) + theta_0 > 0:
+    #         output.append(1)
+    #     else:
+    #         output.append(-1)
+    # return np.array(output)
+    return (feature_matrix.dot(theta) + theta_0 > 0) * 2.0 - 1
 
 
 def classifier_accuracy(

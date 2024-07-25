@@ -56,7 +56,7 @@ def compute_cost_function(X, Y, theta, lambda_factor, temp_parameter):
     """
     n = X.shape[0]
     M = sparse.coo_matrix(([1] * n, (Y, range(n))), shape=(theta.shape[0], n)).toarray()
-    error_term = (-1 / n) * np.sum(np.log(compute_probabilities(X, theta, temp_parameter))[M == 1])
+    error_term = (-1 / n) * np.sum(np.log(compute_probabilities(X, theta, temp_parameter))[M == 1])  # np.choose = M==1
     reg_term = (lambda_factor / 2) * np.linalg.norm(theta) ** 2
     return error_term + reg_term
 
@@ -102,7 +102,8 @@ def update_y(train_y, test_y):
                     for each datapoint in the test set
     """
 
-    return np.mod(train_y, 3), np.mod(test_y, 3)
+    # return np.mod(train_y, 3), np.mod(test_y, 3)
+    return np.remainder(train_y, 3), np.remainder(test_y, 3)  # sign with first
 
 
 def compute_test_error_mod3(X, Y, theta, temp_parameter):
@@ -121,7 +122,7 @@ def compute_test_error_mod3(X, Y, theta, temp_parameter):
         test_error - the error rate of the classifier (scalar)
     """
     assigned_labels = get_classification(X, theta, temp_parameter)
-    return 1 - np.mean(np.mod(assigned_labels, 3) == Y)
+    return 1 - np.mean(np.remainder(assigned_labels, 3) == Y)
 
 
 def softmax_regression(X, Y, temp_parameter, alpha, lambda_factor, k, num_iterations):

@@ -15,6 +15,33 @@ img_rows, img_cols = 42, 28  # input image dimensions
 
 
 class CNN(nn.Module):
+    # def __init__(self, input_dimension):
+    #     super(CNN, self).__init__()
+    #     self.linear1 = nn.Linear(input_dimension, 64)
+    #     self.linear2 = nn.Linear(64, 64)
+    #     self.linear_first_digit = nn.Linear(64, 10)
+    #     self.linear_second_digit = nn.Linear(64, 10)
+    #
+    #     self.encoder = nn.Sequential(
+    #           nn.Conv2d(1, 8, (3, 3)),
+    #           nn.ReLU(),
+    #           nn.MaxPool2d((2, 2)),
+    #           nn.Conv2d(8, 16, (3, 3)),
+    #           nn.ReLU(),
+    #           nn.MaxPool2d((2, 2)),
+    #           Flatten(),
+    #           nn.Linear(720, 128),
+    #           nn.Dropout(0.5),
+    #     )
+    #
+    #     self.first_digit_classifier = nn.Linear(128,10)
+    #     self.second_digit_classifier = nn.Linear(128,10)
+    #
+    # def forward(self, x):
+    #     out = self.encoder(x)
+    #     out_first_digit = self.first_digit_classifier(out)
+    #     out_second_digit = self.second_digit_classifier(out)
+    #     return out_first_digit, out_second_digit
 
     def __init__(self, input_dimension):
         super(CNN, self).__init__()
