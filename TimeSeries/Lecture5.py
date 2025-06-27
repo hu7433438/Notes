@@ -29,7 +29,7 @@ res = AutoReg(train_df['CPI'], lags=2).fit()
 print(res.params)
 del train_df["YearMonth"]
 del train_df["date"]
-# sm.graphics.tsa.plot_pacf(train_df.values.squeeze())
-# plt.show()
-# sm.graphics.tsa.plot_acf(train_df.values.squeeze())
-# plt.show()
+sm.graphics.tsa.plot_pacf(train_df.values.squeeze(), lags=30)
+plt.show()
+sm.graphics.tsa.plot_acf(train_df.values.squeeze(), lags=30)
+plt.show()
